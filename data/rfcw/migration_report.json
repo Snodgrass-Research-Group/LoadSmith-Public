@@ -1,0 +1,210 @@
+{
+  "scope": "RFCW",
+  "state_loads": {
+    "rows": 26280,
+    "per_state": {
+      "IN": {
+        "mat_variable": "IN"
+      },
+      "MI": {
+        "mat_variable": "MI"
+      },
+      "OH": {
+        "mat_variable": "OH"
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/RFCW/RFCW bus data.xlsx",
+      "sha256": "473bb5b894daea31c62ce1d4c916a4e3f653886b0fffb640a3c56f5db6e5c998",
+      "mtime": "2026-07-08T23:10:02"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 20593,
+        "max": 27809,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3
+        ],
+        "found": [
+          1,
+          2,
+          3
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.014405998945586347,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 7217,
+        "actual": 7217,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1
+        },
+        "region_peak_target_mw": 70558.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 7217,
+        "of": 7217,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 192,
+        "bus_table_regional_min": 193,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 7217
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "IN": {
+        "raw_col_sums_cir": [
+          0.24667774447594554,
+          0.42129847753246735,
+          0.332023835941524
+        ],
+        "state_cir_fracs": [
+          0.24667774447594587,
+          0.4212984775324675,
+          0.33202383594152396
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "MI": {
+        "raw_col_sums_cir": [
+          0.3782242884899056,
+          0.28928264128376757,
+          0.33249344626341437
+        ],
+        "state_cir_fracs": [
+          0.3782242884899051,
+          0.28928264128376807,
+          0.33249344626341415
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "OH": {
+        "raw_col_sums_cir": [
+          0.32353404796440305,
+          0.32055260395490337,
+          0.355913562023245
+        ],
+        "state_cir_fracs": [
+          0.3236244810367322,
+          0.320552603954903,
+          0.35591356202324553
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 3,
+    "per_state": [
+      {
+        "state": "IN",
+        "fracs": [
+          0.24667774447594587,
+          0.4212984775324675,
+          0.33202383594152396
+        ],
+        "sum": 1.0000000579499373,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "MI",
+        "fracs": [
+          0.3782242884899051,
+          0.28928264128376807,
+          0.33249344626341415
+        ],
+        "sum": 1.0000003760370872,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "OH",
+        "fracs": [
+          0.3236244810367322,
+          0.320552603954903,
+          0.35591356202324553
+        ],
+        "sum": 1.0000906470148807,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "utility_profiles": {
+    "sources": {
+      "opc_res": {
+        "file": "OhioPowerCompanyClassLoadProfiles2016YTD_2-23-2017.xls",
+        "first_line_skipped": "xls slice rows 3:367 cols 5:28",
+        "rows_parsed": 396,
+        "rows_beyond_365_dropped": 31,
+        "cols_parsed": 28,
+        "value_range": [
+          0.52,
+          2.9
+        ]
+      },
+      "opc_com": {
+        "file": "OPC_com.xlsx",
+        "first_line_skipped": "xls slice rows 3:367 cols 5:28",
+        "rows_parsed": 397,
+        "rows_beyond_365_dropped": 32,
+        "cols_parsed": 28,
+        "value_range": [
+          2.32,
+          13.25
+        ]
+      },
+      "opc_ind": {
+        "file": "OPC_ind.xlsx",
+        "first_line_skipped": "xls slice rows 3:367 cols 5:28",
+        "rows_parsed": 397,
+        "rows_beyond_365_dropped": 32,
+        "cols_parsed": 28,
+        "value_range": [
+          19.29,
+          43.86
+        ]
+      }
+    },
+    "rows": 26280
+  }
+}

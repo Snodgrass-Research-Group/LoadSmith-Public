@@ -1,0 +1,113 @@
+{
+  "scope": "NYISO",
+  "state_loads": {
+    "rows": 8760,
+    "per_state": {
+      "NY": {
+        "mat_variable": "NY",
+        "cross_check": {
+          "vs": "NewYork.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/NYISO/NYISO bus data.xlsx",
+      "sha256": "19495a49506b1ae74a63333100b98527c767b902f7181ca4da4ee072691d7a4c",
+      "mtime": "2026-07-08T23:10:17"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 3630,
+        "max": 8509,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1
+        ],
+        "found": [
+          1
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.0031293061092235843,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 4880,
+        "actual": 4880,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1
+        },
+        "region_peak_target_mw": 32076.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 4880,
+        "of": 4880,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 128,
+        "bus_table_regional_min": 129,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 4880
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "NY": {
+        "raw_col_sums_cir": [
+          0.5280887981634895,
+          0.11848995711928986,
+          0.35223955572362314
+        ],
+        "state_cir_fracs": [
+          0.5280887981634891,
+          0.11848995711928993,
+          0.3522395557236225
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 1,
+    "per_state": [
+      {
+        "state": "NY",
+        "fracs": [
+          0.5280887981634891,
+          0.11848995711928993,
+          0.3522395557236225
+        ],
+        "sum": 0.9988183110064015,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  }
+}

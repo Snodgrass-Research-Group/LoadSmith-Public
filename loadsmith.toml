@@ -1,0 +1,55 @@
+# =============================================================================
+# LoadSmith run settings
+# =============================================================================
+# Read by loadsmith.settings.load_settings() (stdlib tomllib — Python >= 3.11).
+# Precedence: explicit run() keyword > [regions.<NAME>] > [run] > built-in
+# defaults. Delete a line to fall back to the built-in default.
+# Full switch documentation: loadsmith/settings.py.
+
+[run]
+# File outputs: any subset of ["csv", "parquet"]; [] = in-memory only
+# (RunResult carries the arrays). CSV is ~11x slower to write than parquet
+# at full precision (FRCC: ~77 s vs ~7 s per file).
+formats = ["csv", "parquet"]
+
+# Day-boundary smoothing: "none" | "qp".
+# "none" matches every MATLAB output ever produced (the legacy smoothing loop
+# was a silent no-op, bug B1). "qp" is EXPERIMENTAL — see core.run docstring.
+smoothing = "none"
+
+# Fit residual assignment: "" = per-state region default ("residential").
+# "proportional" splits by CIR; "drop" reproduces legacy FRCC bug B3.
+residual = ""
+
+# Bus share columns: "renormalized" (each state class column sums to 1 ->
+# exact energy conservation) | "raw" (legacy B12 under-delivery, for
+# comparisons only).
+shares = "renormalized"
+
+# ---------------------------------------------------------------------------
+# Peak scaling (decision D16 / hook H5) — choose ONE:
+#   "none"   : bus loads exactly conserve the fitted state energies.
+#   "kclkvl" : rescale P and Q by one global factor per region so the
+#              coincident system peak equals the sum of the bus table's
+#              per-state peak loads (col 16 'State Peak Load') — the
+#              KCL-KVL grid generator's `loadscaling` step. The published
+#              2024 reference outputs include this (FRCC factor ~0.8814).
+# ---------------------------------------------------------------------------
+peak_scaling = "none"
+
+# Write a header row in CSVs (false reproduces MATLAB csvwrite exactly).
+csv_header = true
+
+# Structural validation after each region run.
+validate = true
+
+# Power-factor RNG seed (D3) — outputs are reproducible for a given seed.
+seed = 20260708
+
+# Paths.
+store = "data"
+output_dir = "outputs"
+
+# Per-region overrides (uncomment / add as needed):
+# [regions.FRCC]
+# peak_scaling = "kclkvl"

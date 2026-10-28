@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loadsmith"
+version = "0.1.0"
+description = "Synthesize hourly bus-level P/Q load profiles for EPIGRIDS synthetic grid models (Python port of the UW-Madison MATLAB time-series load code)"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Jonathan Snodgrass" }]
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.12",
+    "pandas>=2.2",
+    "pyarrow>=16",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.8"]
+# Migration extras are only needed to run scripts/migrate_data.py once;
+# the runtime package never parses Excel or .mat files (decision D8).
+migrate = ["openpyxl>=3.1", "xlrd>=2.0"]
+dev = ["pytest>=8", "pytest-cov", "ruff"]
+
+[project.scripts]
+loadsmith = "loadsmith.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["loadsmith*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

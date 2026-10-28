@@ -1,0 +1,68 @@
+{
+  "scope": "shared",
+  "checks": {
+    "map_rows": {
+      "actual": 75432,
+      "expected": 75432,
+      "pass": true
+    },
+    "all_13_regions": {
+      "found": [
+        "AK",
+        "AZNM",
+        "CAISO",
+        "FRCC",
+        "HA",
+        "MISO",
+        "NEISO",
+        "NWPP",
+        "NYISO",
+        "RFCE",
+        "RFCW",
+        "SPP",
+        "SRMV",
+        "SRTV",
+        "SRVC"
+      ],
+      "extra_non_loadsmith_regions": [
+        "AK",
+        "HA"
+      ],
+      "pass": true
+    },
+    "frcc_block": {
+      "rows": 7440,
+      "regional_range": [
+        1,
+        7440
+      ],
+      "national_range": [
+        27810,
+        35249
+      ],
+      "national_equals_regional_plus_27809": true,
+      "pass": true
+    }
+  },
+  "nyseg": {
+    "rows": 7776,
+    "shape": [
+      24,
+      36,
+      9
+    ],
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/FRCC/NYSEGloadprofiles2016.mat",
+      "sha256": "df984f0dfe938cec20f4003521f22129fc83cb232f1942a49210cba4dc163dcf",
+      "mtime": "2026-07-08T23:09:34"
+    }
+  },
+  "national_bus_map": {
+    "rows": 75432,
+    "source": {
+      "path": "UW-Madison Synthetic Load/Entire US Load Data from Steve, Modified.xlsx",
+      "sha256": "25703787e77bc68baccd9af02dff373b3c55d8ab3585c562248d433180376753",
+      "mtime": "2024-03-04T13:40:29"
+    }
+  }
+}

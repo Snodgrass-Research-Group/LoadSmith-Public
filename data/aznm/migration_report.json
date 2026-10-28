@@ -1,0 +1,392 @@
+{
+  "scope": "AZNM",
+  "state_loads": {
+    "rows": 43800,
+    "per_state": {
+      "AZ": {
+        "mat_variable": "AZ",
+        "cross_check": {
+          "vs": "Arizona.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "CO": {
+        "mat_variable": "CO",
+        "cross_check": {
+          "vs": "Colorado.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "NV": {
+        "mat_variable": "NV",
+        "cross_check": {
+          "vs": "Nevada.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "NM": {
+        "mat_variable": "NM",
+        "cross_check": {
+          "vs": "NewMexico.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "UT": {
+        "mat_variable": "UT",
+        "cross_check": {
+          "vs": "Utah.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/AZNM/AZNM bus data.xlsx",
+      "sha256": "8a1d11b9d2ca20f8ecf28a16621a55bf464e0739adf8b015fc1a99391bb56a6c",
+      "mtime": "2026-07-08T23:10:17"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 61820,
+        "max": 66498,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "found": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.03483128790253992,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 4536,
+        "actual": 4536,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1,
+          "5": 1
+        },
+        "region_peak_target_mw": 46039.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 4536,
+        "of": 4536,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 183,
+        "bus_table_regional_min": 184,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 4536
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "AZ": {
+        "raw_col_sums_cir": [
+          0.37889757636362587,
+          0.1886065795378247,
+          0.432495738102292
+        ],
+        "state_cir_fracs": [
+          0.37889757636362603,
+          0.1886065795378248,
+          0.43249573810229264
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "CO": {
+        "raw_col_sums_cir": [
+          0.37317527728950367,
+          0.28156153070858136,
+          0.3452630460323205
+        ],
+        "state_cir_fracs": [
+          0.37317527728950334,
+          0.2815615307085813,
+          0.34526304603232033
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "NV": {
+        "raw_col_sums_cir": [
+          0.2742377848675498,
+          0.37373717885588204,
+          0.3517544533205718
+        ],
+        "state_cir_fracs": [
+          0.2742377848675497,
+          0.373737178855882,
+          0.35175445332057176
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "NM": {
+        "raw_col_sums_cir": [
+          0.3852497858306828,
+          0.3233987733763373,
+          0.29135144173216776
+        ],
+        "state_cir_fracs": [
+          0.38524978583068265,
+          0.32339877337633716,
+          0.291351441732168
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "UT": {
+        "raw_col_sums_cir": [
+          0.3826201602428859,
+          0.3059485357290441,
+          0.31143126201604854
+        ],
+        "state_cir_fracs": [
+          0.38262016024288553,
+          0.30594853572904407,
+          0.31143126201604904
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 5,
+    "per_state": [
+      {
+        "state": "AZ",
+        "fracs": [
+          0.37889757636362603,
+          0.1886065795378248,
+          0.43249573810229264
+        ],
+        "sum": 0.9999998940037436,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "CO",
+        "fracs": [
+          0.37317527728950334,
+          0.2815615307085813,
+          0.34526304603232033
+        ],
+        "sum": 0.9999998540304049,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "NV",
+        "fracs": [
+          0.2742377848675497,
+          0.373737178855882,
+          0.35175445332057176
+        ],
+        "sum": 0.9997294170440034,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "NM",
+        "fracs": [
+          0.38524978583068265,
+          0.32339877337633716,
+          0.291351441732168
+        ],
+        "sum": 1.0000000009391878,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "UT",
+        "fracs": [
+          0.38262016024288553,
+          0.30594853572904407,
+          0.31143126201604904
+        ],
+        "sum": 0.9999999579879786,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "skip_sum",
+    "cities": {
+      "Phoenix": {
+        "state": "AZ",
+        "n_files": 17,
+        "tmy_file": "USA_AZ_Phoenix.722780_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_2B_USA_AZ_PHOENIX.csv",
+          "17": "USA_AZ_Phoenix.722780_TMY2.csv"
+        }
+      },
+      "Boulder": {
+        "state": "CO",
+        "n_files": 17,
+        "tmy_file": "USA_CO_Boulder.724699_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "17": "USA_CO_Boulder.724699_TMY2.csv"
+        }
+      },
+      "Las_Vegas": {
+        "state": "NV",
+        "n_files": 17,
+        "tmy_file": "USA_NV_Las.Vegas.723860_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "2": "RefBldgHospitalNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "3": "RefBldgLargeHotelNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "4": "RefBldgLargeOfficeNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "5": "RefBldgMediumOfficeNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "6": "RefBldgMidriseApartmentNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "7": "RefBldgOutPatientNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "8": "RefBldgPrimarySchoolNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "10": "RefBldgSecondarySchoolNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "11": "RefBldgSmallHotelNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "12": "RefBldgSmallOfficeNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "14": "RefBldgStripMallNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "15": "RefBldgSuperMarketNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "16": "RefBldgWarehouseNew2004_7.1_5.0_3B_USA_NV_LAS_VEGAS.csv",
+          "17": "USA_NV_Las.Vegas.723860_TMY2.csv"
+        }
+      },
+      "Albuquerque": {
+        "state": "NM",
+        "n_files": 17,
+        "tmy_file": "USA_NM_Albuquerque.723650_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4B_USA_NM_ALBUQUERQUE.csv",
+          "17": "USA_NM_Albuquerque.723650_TMY2.csv"
+        }
+      },
+      "Salt_Lake_City": {
+        "state": "UT",
+        "n_files": 17,
+        "tmy_file": "USA_UT_Salt.Lake.City.725720_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "17": "USA_UT_Salt.Lake.City.725720_TMY2.csv"
+        }
+      }
+    },
+    "rows": 744600
+  }
+}

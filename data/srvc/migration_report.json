@@ -1,0 +1,420 @@
+{
+  "scope": "SRVC",
+  "state_loads": {
+    "rows": 52560,
+    "per_state": {
+      "DL": {
+        "mat_variable": "DL"
+      },
+      "DC": {
+        "mat_variable": "DC"
+      },
+      "MY": {
+        "mat_variable": "MY"
+      },
+      "NC": {
+        "mat_variable": "NC",
+        "nan_hours_filled_linear": {
+          "hours_1based": [
+            17
+          ],
+          "fill_values": [
+            12922.492800479999
+          ]
+        }
+      },
+      "VG": {
+        "mat_variable": "VG"
+      },
+      "WV": {
+        "mat_variable": "WV"
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/SRVC/SRVC bus data.xlsx",
+      "sha256": "01f9ade87ed9af8fa6232b4454662f040c127b422d1ec5bff4270de8924cf27d",
+      "mtime": "2026-07-08T23:10:08"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 14061,
+        "max": 20400,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "found": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.05305975731439316,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 6340,
+        "actual": 6340,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1,
+          "5": 1,
+          "6": 1
+        },
+        "region_peak_target_mw": 74003.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 6340,
+        "of": 6340,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 180,
+        "bus_table_regional_min": 181,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 6340
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "DL": {
+        "raw_col_sums_cir": [
+          0.38287547408880873,
+          0.18796097195855882,
+          0.42880251901970645
+        ],
+        "state_cir_fracs": [
+          0.3828754740888086,
+          0.1879609719585589,
+          0.4288025190197065
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "DC": {
+        "raw_col_sums_cir": [
+          0.7564516618467236,
+          0.017396415192233918,
+          0.22615192487786284
+        ],
+        "state_cir_fracs": [
+          0.756451661846723,
+          0.01739641519223392,
+          0.2261519248778629
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "MY": {
+        "raw_col_sums_cir": [
+          0.48815335919357794,
+          0.06209560141603708,
+          0.4497510563994956
+        ],
+        "state_cir_fracs": [
+          0.4881533591935782,
+          0.062095601416037066,
+          0.4497510563994962
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "NC": {
+        "raw_col_sums_cir": [
+          0.36345252647253856,
+          0.20093081377818922,
+          0.4349946804598876
+        ],
+        "state_cir_fracs": [
+          0.36345252647253906,
+          0.20093081377818917,
+          0.4349946804598882
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "VG": {
+        "raw_col_sums_cir": [
+          0.30886204317025656,
+          0.16776445363050338,
+          0.5233735031992401
+        ],
+        "state_cir_fracs": [
+          0.3088620431702565,
+          0.16776445363050338,
+          0.5233735031992394
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "WV": {
+        "raw_col_sums_cir": [
+          0.24397472115818952,
+          0.40142665473146355,
+          0.35459861906028445
+        ],
+        "state_cir_fracs": [
+          0.2439747211581896,
+          0.4014266547314635,
+          0.3545986190602847
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 6,
+    "per_state": [
+      {
+        "state": "DL",
+        "fracs": [
+          0.3828754740888086,
+          0.1879609719585589,
+          0.4288025190197065
+        ],
+        "sum": 0.9996389650670741,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "DC",
+        "fracs": [
+          0.756451661846723,
+          0.01739641519223392,
+          0.2261519248778629
+        ],
+        "sum": 1.0000000019168198,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "MY",
+        "fracs": [
+          0.4881533591935782,
+          0.062095601416037066,
+          0.4497510563994962
+        ],
+        "sum": 1.0000000170091115,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "NC",
+        "fracs": [
+          0.36345252647253906,
+          0.20093081377818917,
+          0.4349946804598882
+        ],
+        "sum": 0.9993780207106164,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "VG",
+        "fracs": [
+          0.3088620431702565,
+          0.16776445363050338,
+          0.5233735031992394
+        ],
+        "sum": 0.9999999999999992,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "WV",
+        "fracs": [
+          0.2439747211581896,
+          0.4014266547314635,
+          0.3545986190602847
+        ],
+        "sum": 0.9999999949499379,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "skip_sum",
+    "cities": {
+      "Wilmington": {
+        "state": "DL",
+        "n_files": 17,
+        "tmy_file": "USA_DE_Wilmington.724089_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_DE_Wilmington.724089_TMY2.csv"
+        }
+      },
+      "DC": {
+        "state": "DC",
+        "n_files": 17,
+        "tmy_file": "USA_VA_Sterling-Washington.Dulles.724030_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_VA_Sterling-Washington.Dulles.724030_TMY2.csv"
+        }
+      },
+      "Baltimore": {
+        "state": "MY",
+        "n_files": 17,
+        "tmy_file": "USA_MD_Baltimore.724060_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_MD_Baltimore.724060_TMY2.csv"
+        }
+      },
+      "Charlotte": {
+        "state": "NC",
+        "n_files": 17,
+        "tmy_file": "USA_NC_Charlotte.723140_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "17": "USA_NC_Charlotte.723140_TMY2.csv"
+        }
+      },
+      "Richmond": {
+        "state": "VG",
+        "n_files": 17,
+        "tmy_file": "USA_VA_Richmond.724010_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_VA_Richmond.724010_TMY2.csv"
+        }
+      },
+      "Charleston": {
+        "state": "WV",
+        "n_files": 17,
+        "tmy_file": "USA_WV_Charleston.724140_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_WV_Charleston.724140_TMY2.csv"
+        }
+      }
+    },
+    "rows": 893520
+  }
+}

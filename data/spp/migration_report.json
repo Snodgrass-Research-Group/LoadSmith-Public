@@ -1,0 +1,454 @@
+{
+  "scope": "SPP",
+  "state_loads": {
+    "rows": 52560,
+    "per_state": {
+      "KS": {
+        "mat_variable": "KS",
+        "cross_check": {
+          "vs": "Kansas.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "NB": {
+        "mat_variable": "NB",
+        "cross_check": {
+          "vs": "Nebraska.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "ND": {
+        "mat_variable": "ND",
+        "cross_check": {
+          "vs": "NorthDakota.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "OK": {
+        "mat_variable": "OK",
+        "cross_check": {
+          "vs": "Oklahoma.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "SD": {
+        "mat_variable": "SD",
+        "cross_check": {
+          "vs": "SouthDakota.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "TX": {
+        "mat_variable": "TX",
+        "cross_check": {
+          "vs": "Texas.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/SPP/SPP bus data.xlsx",
+      "sha256": "225695188b015f0a5471a4609b9c1cab367fd0a9d7d00cdec2c7116de20fb44b",
+      "mtime": "2026-07-08T23:10:01"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 50550,
+        "max": 58574,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "found": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.03146301842343874,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 8025,
+        "actual": 8025,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1,
+          "5": 1,
+          "6": 1
+        },
+        "region_peak_target_mw": 108270.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 8025,
+        "of": 8025,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 416,
+        "bus_table_regional_min": 417,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 8025
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "KS": {
+        "raw_col_sums_cir": [
+          0.39401416386940713,
+          0.2673449170474256,
+          0.3386409086462269
+        ],
+        "state_cir_fracs": [
+          0.3940141638694072,
+          0.2673449170474258,
+          0.33864090864622703
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "NB": {
+        "raw_col_sums_cir": [
+          0.32138267667518583,
+          0.35118464555757545,
+          0.327432673752172
+        ],
+        "state_cir_fracs": [
+          0.32138267667518583,
+          0.3511846455575752,
+          0.3274326737521722
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "ND": {
+        "raw_col_sums_cir": [
+          0.3397295879821841,
+          0.4009786856024412,
+          0.2592917273930609
+        ],
+        "state_cir_fracs": [
+          0.33972958798218417,
+          0.40097868560244115,
+          0.2592917273930607
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "OK": {
+        "raw_col_sums_cir": [
+          0.33674724633195896,
+          0.2810409333259662,
+          0.3822118493461262
+        ],
+        "state_cir_fracs": [
+          0.33674724633195896,
+          0.281040933325966,
+          0.38221184934612645
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "SD": {
+        "raw_col_sums_cir": [
+          0.39858821293231195,
+          0.22232621478620068,
+          0.37908557224059325
+        ],
+        "state_cir_fracs": [
+          0.3985882129323118,
+          0.22232621478620068,
+          0.37908557224059325
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "TX": {
+        "raw_col_sums_cir": [
+          0.35413860824115295,
+          0.2704080785717443,
+          0.375456730170762
+        ],
+        "state_cir_fracs": [
+          0.35413860824115345,
+          0.2704080785717446,
+          0.37545673017076137
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 6,
+    "per_state": [
+      {
+        "state": "KS",
+        "fracs": [
+          0.3940141638694072,
+          0.2673449170474258,
+          0.33864090864622703
+        ],
+        "sum": 0.99999998956306,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "NB",
+        "fracs": [
+          0.32138267667518583,
+          0.3511846455575752,
+          0.3274326737521722
+        ],
+        "sum": 0.9999999959849333,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "ND",
+        "fracs": [
+          0.33972958798218417,
+          0.40097868560244115,
+          0.2592917273930607
+        ],
+        "sum": 1.000000000977686,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "OK",
+        "fracs": [
+          0.33674724633195896,
+          0.281040933325966,
+          0.38221184934612645
+        ],
+        "sum": 1.0000000290040514,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "SD",
+        "fracs": [
+          0.3985882129323118,
+          0.22232621478620068,
+          0.37908557224059325
+        ],
+        "sum": 0.9999999999591057,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "TX",
+        "fracs": [
+          0.35413860824115345,
+          0.2704080785717446,
+          0.37545673017076137
+        ],
+        "sum": 1.0000034169836594,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "skip_sum",
+    "cities": {
+      "Wichita": {
+        "state": "KS",
+        "n_files": 17,
+        "tmy_file": "USA_KS_Wichita.724500_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_KS_Wichita.724500_TMY2.csv"
+        }
+      },
+      "Omaha": {
+        "state": "NB",
+        "n_files": 17,
+        "tmy_file": "USA_NE_Omaha.725500_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_5A_USA_IL_CHICAGO-OHARE.csv",
+          "17": "USA_NE_Omaha.725500_TMY2.csv"
+        }
+      },
+      "Fargo": {
+        "state": "ND",
+        "n_files": 17,
+        "tmy_file": "USA_ND_Fargo.727530_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_7A_USA_MN_DULUTH.csv",
+          "17": "USA_ND_Fargo.727530_TMY2.csv"
+        }
+      },
+      "Oklahoma_City": {
+        "state": "OK",
+        "n_files": 17,
+        "tmy_file": "USA_OK_Oklahoma.City.723530_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "17": "USA_OK_Oklahoma.City.723530_TMY2.csv"
+        }
+      },
+      "Sioux_Falls": {
+        "state": "SD",
+        "n_files": 17,
+        "tmy_file": "USA_SD_Sioux.Falls.726510_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_6A_USA_MN_MINNEAPOLIS.csv",
+          "17": "USA_SD_Sioux.Falls.726510_TMY2.csv"
+        }
+      },
+      "Houston": {
+        "state": "TX",
+        "n_files": 17,
+        "tmy_file": "USA_TX_Houston-Intercontinental.722430_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_2A_USA_TX_HOUSTON.csv",
+          "17": "USA_TX_Houston-Intercontinental.722430_TMY2.csv"
+        }
+      }
+    },
+    "rows": 893520
+  }
+}

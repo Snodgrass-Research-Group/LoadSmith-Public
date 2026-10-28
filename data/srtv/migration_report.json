@@ -1,0 +1,324 @@
+{
+  "scope": "SRTV",
+  "state_loads": {
+    "rows": 35040,
+    "per_state": {
+      "AL": {
+        "mat_variable": "AL"
+      },
+      "KY": {
+        "mat_variable": "KY",
+        "nan_hours_filled_linear": {
+          "hours_1based": [
+            1587,
+            7298
+          ],
+          "fill_values": [
+            1613.5,
+            978.3525
+          ]
+        }
+      },
+      "MS": {
+        "mat_variable": "MS"
+      },
+      "TN": {
+        "mat_variable": "TN",
+        "nan_hours_filled_linear": {
+          "hours_1based": [
+            699
+          ],
+          "fill_values": [
+            18369.0
+          ]
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/SRTV/SRTV bus data.xlsx",
+      "sha256": "43bc7738478b0b184f5569924a6cbcd5a0ada0ca0454877c812d969797052961",
+      "mtime": "2025-07-15T16:26:47"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 35424,
+        "max": 39874,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "found": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.02085460971152632,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 4451,
+        "actual": 4451,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "region_peak_target_mw": 54768.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 4451,
+        "of": 4451,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 174,
+        "bus_table_regional_min": 175,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 4451
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "AL": {
+        "raw_col_sums_cir": [
+          0.26333725460691326,
+          0.3704324386411292,
+          0.3662303328104144
+        ],
+        "state_cir_fracs": [
+          0.26333725460691304,
+          0.37043243864112946,
+          0.3662303328104143
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "KY": {
+        "raw_col_sums_cir": [
+          0.2660230051805112,
+          0.3727421514844883,
+          0.36123484135715056
+        ],
+        "state_cir_fracs": [
+          0.26602300518051114,
+          0.37274215148448814,
+          0.361234841357151
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "MS": {
+        "raw_col_sums_cir": [
+          0.28477579611025317,
+          0.33572380797451096,
+          0.3794749678894436
+        ],
+        "state_cir_fracs": [
+          0.28477579611025305,
+          0.3357238079745106,
+          0.3794749678894431
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "TN": {
+        "raw_col_sums_cir": [
+          0.3593673182568902,
+          0.21245381284442888,
+          0.4281788548815705
+        ],
+        "state_cir_fracs": [
+          0.35936731825689044,
+          0.21245381284442882,
+          0.4281788548815705
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 4,
+    "per_state": [
+      {
+        "state": "AL",
+        "fracs": [
+          0.26333725460691304,
+          0.37043243864112946,
+          0.3662303328104143
+        ],
+        "sum": 1.0000000260584567,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "KY",
+        "fracs": [
+          0.26602300518051114,
+          0.37274215148448814,
+          0.361234841357151
+        ],
+        "sum": 0.9999999980221502,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "MS",
+        "fracs": [
+          0.28477579611025305,
+          0.3357238079745106,
+          0.3794749678894431
+        ],
+        "sum": 0.9999745719742068,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "TN",
+        "fracs": [
+          0.35936731825689044,
+          0.21245381284442882,
+          0.4281788548815705
+        ],
+        "sum": 0.9999999859828897,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "skip_sum",
+    "cities": {
+      "Birmingham": {
+        "state": "AL",
+        "n_files": 17,
+        "tmy_file": "USA_AL_Birmingham.722280_TMY2.csv",
+        "building_files": {
+          "1": "aRefBldgFullServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "17": "USA_AL_Birmingham.722280_TMY2.csv"
+        }
+      },
+      "Louisville": {
+        "state": "KY",
+        "n_files": 17,
+        "tmy_file": "USA_KY_Louisville.724230_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_KY_Louisville.724230_TMY2.csv"
+        }
+      },
+      "Jackson": {
+        "state": "MS",
+        "n_files": 17,
+        "tmy_file": "USA_MS_Jackson.722350_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "17": "USA_MS_Jackson.722350_TMY2.csv"
+        }
+      },
+      "Nashville": {
+        "state": "TN",
+        "n_files": 17,
+        "tmy_file": "USA_TN_Nashville.723270_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_TN_Nashville.723270_TMY2.csv"
+        }
+      }
+    },
+    "rows": 595680
+  }
+}

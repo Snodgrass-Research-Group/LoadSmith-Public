@@ -1,0 +1,382 @@
+{
+  "scope": "NWPP",
+  "state_loads": {
+    "rows": 43800,
+    "per_state": {
+      "ID": {
+        "mat_variable": "ID",
+        "cross_check": {
+          "vs": "Idaho.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "MT": {
+        "mat_variable": "MT",
+        "cross_check": {
+          "vs": "Montana.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "OR": {
+        "mat_variable": "OR",
+        "cross_check": {
+          "vs": "Oregon.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "WA": {
+        "mat_variable": "WA",
+        "cross_check": {
+          "vs": "Washington.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "WY": {
+        "mat_variable": "WY",
+        "cross_check": {
+          "vs": "Wyoming.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/NWPP/NWPP_bus_data.xlsx",
+      "sha256": "05106bd6a754d3d6db20d5082d3e84d3de6ca14b90c6d495656b322caa5e0a64",
+      "mtime": "2026-07-08T23:10:23"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 58605,
+        "max": 61779,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "found": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.071444871443967,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 2977,
+        "actual": 2977,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1,
+          "5": 1
+        },
+        "region_peak_target_mw": 37657.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 2977,
+        "of": 2977,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 228,
+        "bus_table_regional_min": 229,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 2977
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "ID": {
+        "raw_col_sums_cir": [
+          0.27180618633185943,
+          0.37298994775271993,
+          0.3552038769102879
+        ],
+        "state_cir_fracs": [
+          0.2718061863318596,
+          0.37298994775272015,
+          0.3552038769102879
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "MT": {
+        "raw_col_sums_cir": [
+          0.3514698425956005,
+          0.3037256021229253,
+          0.34480454636280455
+        ],
+        "state_cir_fracs": [
+          0.35146984259560066,
+          0.3037256021229253,
+          0.34480454636280455
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "OR": {
+        "raw_col_sums_cir": [
+          0.34772597356675505,
+          0.24937637774503488,
+          0.40289764569974884
+        ],
+        "state_cir_fracs": [
+          0.34772597356675544,
+          0.24937637774503502,
+          0.40289764569974895
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "WA": {
+        "raw_col_sums_cir": [
+          0.3337515283360942,
+          0.27586927815173706,
+          0.39037913247829276
+        ],
+        "state_cir_fracs": [
+          0.33375152833609406,
+          0.27586927815173723,
+          0.3903791324782928
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "WY": {
+        "raw_col_sums_cir": [
+          0.22588205472666195,
+          0.6082905154688629,
+          0.16582743677134723
+        ],
+        "state_cir_fracs": [
+          0.22588205472666192,
+          0.6082905154688629,
+          0.16582743677134712
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 5,
+    "per_state": [
+      {
+        "state": "ID",
+        "fracs": [
+          0.2718061863318596,
+          0.37298994775272015,
+          0.3552038769102879
+        ],
+        "sum": 1.0000000109948677,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "MT",
+        "fracs": [
+          0.35146984259560066,
+          0.3037256021229253,
+          0.34480454636280455
+        ],
+        "sum": 0.9999999910813305,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "OR",
+        "fracs": [
+          0.34772597356675544,
+          0.24937637774503502,
+          0.40289764569974895
+        ],
+        "sum": 0.9999999970115394,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "WA",
+        "fracs": [
+          0.33375152833609406,
+          0.27586927815173723,
+          0.3903791324782928
+        ],
+        "sum": 0.999999938966124,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "WY",
+        "fracs": [
+          0.22588205472666192,
+          0.6082905154688629,
+          0.16582743677134712
+        ],
+        "sum": 1.000000006966872,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "skip_sum",
+    "cities": {
+      "Boise": {
+        "state": "ID",
+        "n_files": 17,
+        "tmy_file": "USA_ID_Boise.726810_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_5B_USA_CO_BOULDER.csv",
+          "17": "USA_ID_Boise.726810_TMY2.csv"
+        }
+      },
+      "Billings": {
+        "state": "MT",
+        "n_files": 17,
+        "tmy_file": "USA_MT_Billings.726770_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "17": "USA_MT_Billings.726770_TMY2.csv"
+        }
+      },
+      "Cheyenne": {
+        "state": "WY",
+        "n_files": 17,
+        "tmy_file": "USA_WY_Cheyenne.725640_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_6B_USA_MT_HELENA.csv",
+          "17": "USA_WY_Cheyenne.725640_TMY2.csv"
+        }
+      }
+    },
+    "rows": 446760
+  },
+  "utility_profiles": {
+    "sources": {
+      "a1": {
+        "file": "a1-2000.csv",
+        "first_line_skipped": "header_row",
+        "rows_parsed": 366,
+        "rows_beyond_365_dropped": 1,
+        "cols_parsed": 24,
+        "value_range": [
+          0.300213345,
+          1.088610621
+        ]
+      },
+      "a10": {
+        "file": "a10-2000.csv",
+        "first_line_skipped": "header_row",
+        "rows_parsed": 366,
+        "rows_beyond_365_dropped": 1,
+        "cols_parsed": 24,
+        "value_range": [
+          0.300242038,
+          1.123907063
+        ]
+      },
+      "e1": {
+        "file": "e1-2000.csv",
+        "first_line_skipped": "data_row",
+        "rows_parsed": 365,
+        "rows_beyond_365_dropped": 0,
+        "cols_parsed": 24,
+        "value_range": [
+          0.293185374,
+          1.163626293
+        ]
+      }
+    },
+    "rows": 26280
+  }
+}

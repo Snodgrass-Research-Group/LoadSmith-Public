@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use LoadSmith or the load profiles it produces, please cite it as below."
+title: "LoadSmith"
+type: software
+license: MIT
+repository-code: "https://github.com/Snodgrass-Research-Group/LoadSmith-Public"
+authors:
+  - family-names: Snodgrass
+    given-names: Jonathan M.
+    orcid: "https://orcid.org/0000-0003-2305-8136"
+references:
+  - type: software
+    title: "EPIGRIDS time-series load code (MATLAB)"
+    authors:
+      - family-names: Lesieutre
+        given-names: Bernard C.
+        orcid: "https://orcid.org/0000-0002-5274-324X"
+    notes: "Original MATLAB code by Bernie Lesieutre's research group at the University of Wisconsin-Madison, ported by LoadSmith."

@@ -1,0 +1,152 @@
+{
+  "scope": "CAISO",
+  "state_loads": {
+    "rows": 8760,
+    "per_state": {
+      "CA": {
+        "mat_variable": "CA",
+        "cross_check": {
+          "vs": "California.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/CAISO/California bus tracts with load apportionemnts.xlsx",
+      "sha256": "196fb99dbb66943282791b08b280e3ef39b338af078e8a77402735b9b9fceab1",
+      "mtime": "2026-07-08T23:09:50"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 66869,
+        "max": 74902,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1
+        ],
+        "found": [
+          1
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          26,
+          27,
+          28
+        ],
+        "min": 0.0,
+        "max": 0.0028297993931854183,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 8034,
+        "actual": 8034,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1
+        },
+        "region_peak_target_mw": 47257.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 8034,
+        "of": 8034,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 370,
+        "bus_table_regional_min": 371,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 8034
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "CA": {
+        "raw_col_sums_cir": [
+          0.4547806589045126,
+          0.19670153629702802,
+          0.3484884326853199
+        ],
+        "state_cir_fracs": [
+          0.455,
+          0.197,
+          0.348
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 1,
+    "per_state": [
+      {
+        "state": "CA",
+        "fracs": [
+          0.455,
+          0.197,
+          0.348
+        ],
+        "sum": 1.0,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "utility_profiles": {
+    "sources": {
+      "a1": {
+        "file": "a1-2000.csv",
+        "first_line_skipped": "header_row",
+        "rows_parsed": 365,
+        "rows_beyond_365_dropped": 0,
+        "cols_parsed": 24,
+        "value_range": [
+          0.300213345,
+          1.088610621
+        ]
+      },
+      "a10": {
+        "file": "a10-2000.csv",
+        "first_line_skipped": "header_row",
+        "rows_parsed": 365,
+        "rows_beyond_365_dropped": 0,
+        "cols_parsed": 24,
+        "value_range": [
+          0.300242038,
+          1.123907063
+        ]
+      },
+      "e1": {
+        "file": "e1-2000.csv",
+        "first_line_skipped": "data_row",
+        "rows_parsed": 365,
+        "rows_beyond_365_dropped": 0,
+        "cols_parsed": 24,
+        "value_range": [
+          0.29318537,
+          1.16362629
+        ]
+      }
+    },
+    "rows": 26280
+  }
+}

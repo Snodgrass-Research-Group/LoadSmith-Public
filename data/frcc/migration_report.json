@@ -1,0 +1,273 @@
+{
+  "scope": "FRCC",
+  "state_loads": {
+    "rows": 26280,
+    "per_state": {
+      "FL": {
+        "mat_variable": "FL",
+        "cross_check": {
+          "vs": "Florida.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        },
+        "nan_hours_filled_linear": {
+          "hours_1based": [
+            1707
+          ],
+          "fill_values": [
+            14455.5
+          ]
+        }
+      },
+      "GA": {
+        "mat_variable": "GA",
+        "cross_check": {
+          "vs": "Georgia.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      },
+      "SC": {
+        "mat_variable": "SC",
+        "cross_check": {
+          "vs": "SouthCarolina.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/FRCC/FRCC bus data.xlsx",
+      "sha256": "f98b199268a8c108d0f37600871bbbd3a5106e9f8b3d4c1cd753a81b0a0c3973",
+      "mtime": "2026-07-08T23:10:02"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 28026,
+        "max": 35249,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2,
+          3
+        ],
+        "found": [
+          1,
+          2,
+          3
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.007566271107447374,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 7224,
+        "actual": 7224,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1,
+          "3": 1
+        },
+        "region_peak_target_mw": 78763.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 7224,
+        "of": 7224,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 216,
+        "bus_table_regional_min": 217,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 7224
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "FL": {
+        "raw_col_sums_cir": [
+          0.40679564855220307,
+          0.07035654845094716,
+          0.5186111391328971
+        ],
+        "state_cir_fracs": [
+          0.40679564855220335,
+          0.07035654845094719,
+          0.518611139132896
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "GA": {
+        "raw_col_sums_cir": [
+          0.3470695318098435,
+          0.2306852116013133,
+          0.42206375851509037
+        ],
+        "state_cir_fracs": [
+          0.34706953180984385,
+          0.23068521160131328,
+          0.4220637585150898
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "SC": {
+        "raw_col_sums_cir": [
+          0.27744556856249236,
+          0.33579207703797287,
+          0.3867623933752058
+        ],
+        "state_cir_fracs": [
+          0.2774455685624922,
+          0.3357920770379728,
+          0.38676239337520585
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 3,
+    "per_state": [
+      {
+        "state": "FL",
+        "fracs": [
+          0.40679564855220335,
+          0.07035654845094719,
+          0.518611139132896
+        ],
+        "sum": 0.9957633361360465,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "GA",
+        "fracs": [
+          0.34706953180984385,
+          0.23068521160131328,
+          0.4220637585150898
+        ],
+        "sum": 0.999818501926247,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "SC",
+        "fracs": [
+          0.2774455685624922,
+          0.3357920770379728,
+          0.38676239337520585
+        ],
+        "sum": 1.000000038975671,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "col1",
+    "cities": {
+      "Miami_Intl_AP": {
+        "state": "FL",
+        "n_files": 17,
+        "tmy_file": "USA_FL_Miami.722020_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_1A_USA_FL_MIAMI.csv",
+          "17": "USA_FL_Miami.722020_TMY2.csv"
+        }
+      },
+      "Atlanta_AP": {
+        "state": "GA",
+        "n_files": 17,
+        "tmy_file": "USA_GA_Atlanta.722190_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "17": "USA_GA_Atlanta.722190_TMY2.csv"
+        }
+      },
+      "Charleston": {
+        "state": "SC",
+        "n_files": 17,
+        "tmy_file": "USA_SC_Charleston.722080_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_3A_USA_GA_ATLANTA.csv",
+          "17": "USA_SC_Charleston.722080_TMY2.csv"
+        }
+      }
+    },
+    "rows": 446760
+  }
+}

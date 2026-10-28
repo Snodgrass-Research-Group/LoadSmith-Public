@@ -1,0 +1,335 @@
+# =============================================================================
+# LoadSmith conversion — MATLAB dependency tree (machine-parseable)
+# =============================================================================
+# Generated: 2026-07-08.
+#
+# HOW TO READ THIS FILE:
+#   - `archetype` describes which pipeline family a main script belongs to:
+#       nyseg  : daily fit against 36 NYSEG representative day profiles
+#                (profiles_aggregate from NYSEGloadprofiles2016.mat)
+#       nrel   : daily fit against the SAME DAY's 24-h slice of full-year
+#                8760-h NREL aggregate building profiles (calendar code is
+#                DEAD CODE in these scripts)
+#       hybrid : both sources present (see notes)
+#   - `status`: active | superseded | orphan | duplicate | ancestor-unknown
+#       * Only `active` files are converted to Python.
+#       * `superseded` = replaced by the _NEW variant (canonical per user
+#         decision 2026-07-08: _NEW per-class bus distribution everywhere).
+#   - `calls` lists user-function calls only. MATLAB builtins that matter:
+#       clusterdata (Stats toolbox), lsqnonneg, quadprog (Optim toolbox).
+#   - Bus counts come from the final smoothing loop bound `for i = 1:N`.
+#   - See MATLAB_BUGS.md for the bug register referenced by `bugs:` ids.
+# =============================================================================
+
+shared_functions:
+  smoothprofile:
+    copies:
+      - AZNM/smoothprofile.m
+      - CAISO/smoothprofile.m
+      - FRCC/smoothprofile.m
+      - MISO/smoothprofile.m
+      - NEISO/smoothprofile.m
+      - NWPP/smoothprofile.m
+      - NYISO/smoothprofile.m
+      - RFCE/smoothprofile.m
+      - RFCW/smoothprofile.m
+      - SPP/smoothprofile.m
+      - SRMV/smoothprofile.m
+      - SRTV/smoothprofile.m
+      - SRVC/smoothprofile.m
+    identical: true          # all 13 copies are the same 46-line function
+    status: active           # convert ONCE -> loadsmith/smoothing.py
+    calls: [quadprog]
+    purpose: >
+      Day-boundary smoothing. For each consecutive day pair, solves a 6-var QP
+      adding quadratic corrections to hours 20-24 / 1-5 so the 2nd derivative
+      across midnight is non-negative, minimizing total-load change.
+    bugs: [B1]               # B1: called with 1x8760 row vectors -> no-op
+
+regions:
+  FRCC:
+    most_complicated: true   # chosen as pilot region
+    states: {FL: Florida, GA: Georgia, SC: SouthCarolina}
+    state_codes: {FL: 1, GA: 2, SC: 3}   # BusDist column 5 values
+    bus_count: 7224
+    archetype: hybrid        # NYSEG fit drives output; NREL fit comparison-only
+    files:
+      MakeLoadProfiles_FRCC_NEW.m:
+        status: active       # CANONICAL main (966 lines)
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads:
+          - Florida.mat        # FL (1x8760), from xls2rawMat_FRCC.m
+          - Georgia.mat
+          - SouthCarolina.mat
+          - NYSEGloadprofiles2016.mat   # profiles_aggregate (24x36xN)
+          - "NREL_Profiles/Miami_Intl_AP/*.csv"   # 16 bldg types + TMY2 (17)
+          - "NREL_Profiles/Atlanta_AP/*.csv"
+          - "NREL_Profiles/Charleston/*.csv"
+          - "FRCC bus data.xlsx"        # CIR rows 1:3 cols 27:29; BusDist
+        writes: [P_Load_FRCC.csv]       # Q_Load commented out
+        bugs: [B1, B2, B3, B4]
+        notes: >
+          Output classes come from the NYSEG-basis fit (XX_load), NOT the NREL
+          fit. NREL clustering/fit sections (XX_load_NREL / _AE) are
+          computed only for comparison plots in the canonical output path.
+      MakeLoadProfiles_FRCC.m:
+        status: superseded   # original; distributes state TOTAL to all buses
+        diff_vs_new: "P_load uses XX_load_total_AE broadcast; Q_load active"
+      NREL_cluster.m:
+        status: orphan       # standalone clustering exploration (383 lines)
+        notes: loads GA_load.mat which does not exist in repo
+      xls2rawMat_FRCC.m:
+        status: active       # ingestion; replaced by loadsmith ingest/migration
+        reads: [SC_Houly_Load.xls, GA_Hourly_Load.xls, Florida.xls]
+        writes: [SouthCarolina.mat, Georgia.mat, Florida.mat]
+
+  MISO:
+    states: {IL: Illinois, WI: Wisconsin, IA: Iowa, MN: Minnesota}
+    bus_count: 6671          # verified at migration 2026-07-09 (B5 resolved)
+    archetype: nyseg
+    files:
+      MakeLoadProfiles_MISO_NEW.m:
+        status: active
+        calls: [smoothprofile, lsqnonneg]
+        reads:
+          - RawStateLoadProfiles.mat    # IL IA MN WI; producer unknown (H3)
+          - NYSEGloadprofiles2016.mat
+          - "MISO bus data.xlsx"        # CIR rows 1:4 cols 28:30 (IL/IA/MN/WI)
+        writes: [P_Load_MISO.csv]
+        bugs: [B1, B5, B8]              # B8: no BusNums column in output
+        notes: >
+          IL and WI fit directly; IA and MN fit as combined IAMN series
+          (CIR = load-weighted average), then de-combined by per-class
+          scale factors. Unique to MISO.
+      MakeLoadProfiles_MISO.m: {status: superseded}
+      MakeLoadProfiles_react.m:
+        status: orphan       # reactive-power prototype; its Q logic was folded
+                             # into the active MISO script; outputs consumed by
+                             # nothing (P_load.mat/Q_load.mat don't exist)
+      loadprofiles2010.m:
+        status: orphan       # confirmed 2026-07-08: 2010-vintage New England
+                             # prototype. Computes (but never saves) a 24x36x9
+                             # profiles_aggregate identical in recipe to
+                             # NYSEGloadprofiles2016.mat -> algorithmic ancestor
+                             # only. Saves seasonal 168-h P/Q to LoadProfiles.mat
+                             # which nothing consumes. Do not port.
+      smoothprofile.m: {status: active, see: shared_functions}
+
+  NYISO:
+    states: {NY: NewYork}
+    bus_count: 4880
+    archetype: nyseg
+    files:
+      MakeLoadProfiles_NYISO.m:
+        status: active       # no _NEW exists; needs per-class backport (D1)
+        calls: [smoothprofile, lsqnonneg]
+        reads: [NewYork.mat, NYSEGloadprofiles2016.mat, "NYISO bus data.xlsx"]
+        writes: [P_Load_NYISO.csv, Q_Load_NYISO.csv]
+        bugs: [B1, B2, B9]   # B9: P/Q use NY_load_total for all 3 class cols
+        notes: CIR from bus xlsx row 1, cols 27:29. Single-state fit.
+      MakeLoadProfiles_MISO_NEW.m:
+        status: duplicate    # stray byte-identical copy of MISO/..._NEW.m
+      xls2rawMat_NYISO.m: {status: active, writes: [NewYork.mat]}
+
+  CAISO:
+    states: {CA: California}
+    bus_count: 8034          # smoothing loop magic number; verify vs xlsx (F2)
+    archetype: utility       # PG&E rate-schedule daily profiles as fit basis
+    files:
+      MakeLoadProfiles_CAISO_NEW.m:
+        status: active
+        calls: [smoothprofile, lsqnonneg]
+        reads:
+          - California.mat
+          - NYSEGloadprofiles2016.mat   # loaded but UNUSED (dead pedigree code)
+          - a1-2000.csv        # PG&E A-1 small commercial  -> basis col 2
+          - a10-2000.csv       # PG&E A-10 medium/industrial -> basis col 3
+          - e1-2000.csv        # PG&E E-1 residential        -> basis col 4
+          - "California bus tracts with load apportionemnts.xlsx"  # sic
+        writes: [P_Load_CAISO.csv]
+        bugs: [B1]
+        notes: >
+          SEC_com/ind/res.csv (Southern California Edison, 365x24) read is
+          commented out. CA_CIR hard-coded [0.455 0.197 0.348] "from EIA".
+          State-code col 6 (CA=1); per-class bus cols 26:28; LoadDist col 17.
+          Residential basis is col 4 (not col 2 as in NYSEG archetype).
+      MakeLoadProfiles_CAISO.m: {status: superseded}
+      enrel_profiles_CAISO.m: {status: orphan}   # 27-line exploration
+      "MakeLoadProfiles_CAISO.m~": {status: orphan}  # editor backup
+
+  NEISO:
+    states: {CT: Connecticut, ME: Maine, MA: Massachussetts, NH: NewHampshire,
+             RI: RhodeIsland, VT: Vermont}
+    bus_count: 3370
+    archetype: nyseg
+    files:
+      MakeLoadProfiles_NEISO_NEW.m:
+        status: active
+        calls: [smoothprofile, lsqnonneg]
+        reads: ["<state>.mat x6", NYSEGloadprofiles2016.mat, "NEISO bus data.xlsx"]
+        writes: [P_Load_NEISO.csv]
+        bugs: [B1]
+      MakeLoadProfiles_NEISO.m: {status: superseded}
+      "MakeLoadProfiles_NEISO.m~": {status: orphan}
+      xls2rawMat_NEISO.m: {status: active}
+
+  RFCW:
+    states: {IN: Indiana, MI: Michigan, OH: Ohio}
+    bus_count: 7217
+    archetype: hybrid        # NYSEG + Ohio utility class load profiles
+    files:
+      MakeLoadProfiles_RFCW.m:
+        status: active       # already per-class distribution (no backport)
+        calls: [smoothprofile, lsqnonneg]
+        reads:
+          - Indiana.mat
+          - Michigan.mat
+          - Ohio.mat
+          - NYSEGloadprofiles2016.mat   # used only for a comparison OH fit
+          - OhioPowerCompanyClassLoadProfiles2016YTD_2-23-2017.xls  # res_OPC
+          - OPC_com.xlsx
+          - OPC_ind.xlsx
+          - ColumbusSouthernPowerCompanyClassLoadProfiles2016YTD_2-23-2017.xls
+          - CSP_com.xlsx     # read TWICE: as com_CS and (bug B10) as ind_CS
+          - "RFCW bus data.xlsx"   # CIR rows 1:3 cols 28:30 (IN/MI/OH)
+        writes: [P_Load_RFCW.csv, Q_Load_RFCW.csv]
+        bugs: [B1, B2, B10]
+        notes: >
+          IN and MI fit against OPC 365x24 class profiles (indexed by calendar
+          day, not day-type); OH exported fit is OPC-based (OH_load_OPC);
+          NYSEG and CSP OH fits computed for comparison only. Distribution
+          divides bus class shares by state CIR (SRVC convention, flag F3).
+      xls2rawMat_RFCW.m: {status: active}
+
+  RFCE:
+    states: {NJ: NewJersey, PA: Pennsylvania}
+    bus_count: 5218
+    archetype: nrel
+    files:
+      MakeLoadProfiles_RFCE.m:
+        status: active       # no _NEW; needs per-class backport (D1)
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: [NewJersey.mat, Pennsylvania.mat, "NREL_Profiles/<city>/*.csv",
+                "RFCE bus data.xlsx"]
+        writes: [P_Load_RFCE.csv, Q_Load_RFCE.csv]
+        bugs: [B1, B2]
+      xls2rawMat_RFCE.m: {status: active}
+      "NREL_Profiles/Newark/test.m": {status: orphan}
+
+  AZNM:
+    states: {AZ: Arizona, CO: Colorado, NM: NewMexico, NV: Nevada, UT: Utah}
+    bus_count: 4536
+    archetype: nrel
+    files:
+      MakeLoadProfiles_AZNM.m:
+        status: active
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: ["<state>.mat x5", "NREL_Profiles/<city>/*.csv",
+                "AZNM bus data.xlsx"]
+        writes: [P_Load_AZNM.csv, Q_Load_AZNM.csv]
+        bugs: [B1, B2]
+      xls2rawMat_AZNM.m: {status: active}
+
+  NWPP:
+    states: {ID: Idaho, MT: Montana, OR: Oregon, WA: Washington, WY: Wyoming}
+    bus_count: 2977
+    archetype: nrel
+    files:
+      MakeLoadProfiles_NWPP.m:
+        status: active
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: ["<state>.mat x5", "NREL_Profiles/<city>/*.csv",
+                "a1-2000.csv", "a10-2000.csv", "e1-2000.csv",
+                "NWPP_bus_data.xlsx"]
+        writes: [P_Load_NWPP.csv, Q_Load_NWPP.csv]
+        bugs: [B1, B2]
+      xls2rawMat_NWPP.m: {status: active}
+
+  SPP:
+    states: {KS: Kansas, NE: Nebraska, ND: NorthDakota, OK: Oklahoma,
+             SD: SouthDakota, TX: Texas}
+    bus_count: 3123
+    archetype: nrel
+    files:
+      MakeLoadProfiles_SPP.m:
+        status: active
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: ["<state>.mat x6", "NREL_Profiles/<city>/*.csv",
+                "ERCOT Backcasted Load Profiles 2016.xls", "SPP bus data.xlsx"]
+        writes: [P_Load_SPP.csv, Q_Load_SPP.csv]
+        bugs: [B1, B2]
+      xls2rawMat_SPP.m: {status: active}
+
+  SRMV:
+    states: {AR: Arkansas, LA: Louisiana, MO: Missouri}
+    bus_count: 3123          # same as SPP -- verify against xlsx (flag F1)
+    archetype: nrel
+    files:
+      MakeLoadProfiles_SRMV.m:
+        status: active
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: ["<state>.mat x3", "NREL_Profiles/<city>/*.csv",
+                "SRMV bus data.xlsx"]
+        writes: [P_Load_SRMV.csv, Q_Load_SRMV.csv]
+        bugs: [B1, B2]
+      xls2rawMat_SRMV.m: {status: active}
+
+  SRTV:
+    states: {AL: Alabama, KY: Kentucky, MS: Mississippi, TN: Tennessee}
+    bus_count: 4451
+    archetype: nrel
+    files:
+      MakeLoadProfiles_SRTV.m:
+        status: active
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: ["<state>.mat x4", "NREL_Profiles/<city>/*.csv",
+                "SRTV bus data.xlsx"]
+        writes: [P_Load_SRTV.csv, Q_Load_SRTV.csv]
+        bugs: [B1, B2]
+      xls2rawMat_SRTV.m: {status: active}
+
+  SRVC:
+    states: {DE: Delaware, DC: DistrictofColumbia, MD: Maryland,
+             NC: NorthCarolina, VA: Virginia, WV: WestVirginia}
+    state_codes: {DE: 1, DC: 2, MD: 3, NC: 4, VA: 5, WV: 6}
+    bus_count: 6340
+    archetype: nrel
+    files:
+      MakeLoadProfiles_SRVC.m:
+        status: active       # fully analyzed 2026-07-08; see algorithms/
+        calls: [smoothprofile, clusterdata, lsqnonneg]
+        reads: ["<state>.mat x6", "NREL_Profiles/<city>/*.csv",
+                "SRVC bus data.xlsx"]
+        writes: [P_Load_SRVC.csv, Q_Load_SRVC.csv]
+        bugs: [B1, B2, B6, B7]
+      xls2rawMat_SRVC.m: {status: active}
+
+# -----------------------------------------------------------------------------
+# Verification flags (resolve during conversion; see MATLAB_BUGS.md for bugs)
+# -----------------------------------------------------------------------------
+flags:
+  F1: SRMV bus count 3123 equals SPP's exactly -- verify against its xlsx.
+  F2: CAISO smoothing bound 8034 is a magic number -- verify vs bus xlsx rows.
+  F3: >
+    Two bus-distribution conventions exist. FRCC/CAISO/MISO NEW multiply raw
+    bus class-share columns by class profiles; SRVC/RFCW divide the share by
+    the state CIR fraction first. Whether cols 24:26 sum (per state) to 1.0
+    per class, or to the CIR fraction, decides which is correct. Check column
+    sums for every region during ingestion and normalize explicitly.
+
+# -----------------------------------------------------------------------------
+# Key data files with no in-repo producer (provenance hooks -> HOOKS.md)
+# -----------------------------------------------------------------------------
+external_data:
+  NYSEGloadprofiles2016.mat:
+    variable: profiles_aggregate   # 24 x 36 x N aggregate class profiles
+    consumers: [FRCC, MISO, NYISO, CAISO, NEISO, RFCW]
+    producer: unknown (possibly MISO/loadprofiles2010.m lineage) # H2
+  RawStateLoadProfiles.mat:
+    variables: [IL, IA, MN, WI]
+    consumers: [MISO]
+    producer: unknown (no xls2rawMat_MISO exists)                # H3
+  "<REGION> bus data.xlsx":
+    consumers: all regions
+    producer: EPIGRIDS bus/census-tract apportionment work (external)
+    note: national bus number mapping pending from user          # H1

@@ -1,0 +1,216 @@
+{
+  "scope": "RFCE",
+  "state_loads": {
+    "rows": 17520,
+    "per_state": {
+      "NJ": {
+        "mat_variable": "NJ",
+        "cross_check": {
+          "vs": "NewJersey.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        },
+        "nan_hours_filled_linear": {
+          "hours_1based": [
+            1587,
+            7298
+          ],
+          "fill_values": [
+            7702.3535,
+            6347.5075
+          ]
+        }
+      },
+      "PN": {
+        "mat_variable": "PN",
+        "cross_check": {
+          "vs": "Pennsylvania.mat",
+          "nan_positions_match": true,
+          "max_abs_diff": 0.0,
+          "allclose": true
+        }
+      }
+    }
+  },
+  "bus_table": {
+    "source": {
+      "path": "EPIGRIDS-Time-Series-Load-Code/RFCE/RFCE bus data.xlsx",
+      "sha256": "f3d3a8b37a61370ededd2db25c17d6db0fe22bafba4d73d414eab9552d0ac783",
+      "mtime": "2026-07-08T23:10:07"
+    },
+    "anchors": {
+      "col1_integer_bus_numbers": {
+        "pass": true,
+        "min": 8663,
+        "max": 13880,
+        "note": "header 'Final National Bus Num' \u2014 bus table col 1 is the NATIONAL bus number, not the regional one (regional is col 2)"
+      },
+      "state_codes": {
+        "expected": [
+          1,
+          2
+        ],
+        "found": [
+          1,
+          2
+        ],
+        "pass": true
+      },
+      "share_cols_in_0_1": {
+        "cols": [
+          24,
+          25,
+          26
+        ],
+        "min": 0.0,
+        "max": 0.01053574611327763,
+        "pass": true
+      },
+      "bus_row_count": {
+        "expected_approx": 5218,
+        "actual": 5218,
+        "pass": true
+      },
+      "state_peak_col16": {
+        "pass": true,
+        "unique_values_per_state": {
+          "1": 1,
+          "2": 1
+        },
+        "region_peak_target_mw": 48489.0
+      }
+    },
+    "map_join": {
+      "bus_type=Load": {
+        "matched": 5218,
+        "of": 5218,
+        "pass": true
+      },
+      "used_filter": "bus_type=Load",
+      "national_equals_bus_table_col1": true,
+      "gen_plus_load_numbering": {
+        "region_map_gen_buses": 153,
+        "bus_table_regional_min": 154,
+        "note": "regional numbering covers gen+load; bus table holds only the Load rows"
+      }
+    },
+    "rows": 5218
+  },
+  "f3_share_convention": {
+    "per_state": {
+      "NJ": {
+        "raw_col_sums_cir": [
+          0.5157665827436713,
+          0.09311166141691904,
+          0.39108540035214034
+        ],
+        "state_cir_fracs": [
+          0.5157665827436718,
+          0.0931116614169189,
+          0.39108540035214107
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      },
+      "PN": {
+        "raw_col_sums_cir": [
+          0.30220342927275423,
+          0.32556141006132655,
+          0.3722348709010952
+        ],
+        "state_cir_fracs": [
+          0.302203429272754,
+          0.32556141006132644,
+          0.3722348709010957
+        ],
+        "sums_to_one": false,
+        "sums_to_cir_fraction": true
+      }
+    },
+    "verdict": "sums_to_cir_fraction"
+  },
+  "cir_fractions": {
+    "rows": 2,
+    "per_state": [
+      {
+        "state": "NJ",
+        "fracs": [
+          0.5157665827436718,
+          0.0931116614169189,
+          0.39108540035214107
+        ],
+        "sum": 0.9999636445127318,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      },
+      {
+        "state": "PN",
+        "fracs": [
+          0.302203429272754,
+          0.32556141006132644,
+          0.3722348709010957
+        ],
+        "sum": 0.9999997102351761,
+        "expected_sum": 1.0,
+        "nonnegative": true,
+        "sums_to_1_within_2pct": true
+      }
+    ]
+  },
+  "nrel_profiles": {
+    "parse_mode": "skip_sum",
+    "cities": {
+      "Newark": {
+        "state": "NJ",
+        "n_files": 17,
+        "tmy_file": "USA_NJ_Newark.725020_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_NJ_Newark.725020_TMY2.csv"
+        }
+      },
+      "Philadelphia": {
+        "state": "PN",
+        "n_files": 17,
+        "tmy_file": "USA_PA_Philadelphia.724086_TMY2.csv",
+        "building_files": {
+          "1": "RefBldgFullServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "2": "RefBldgHospitalNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "3": "RefBldgLargeHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "4": "RefBldgLargeOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "5": "RefBldgMediumOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "6": "RefBldgMidriseApartmentNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "7": "RefBldgOutPatientNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "8": "RefBldgPrimarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "9": "RefBldgQuickServiceRestaurantNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "10": "RefBldgSecondarySchoolNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "11": "RefBldgSmallHotelNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "12": "RefBldgSmallOfficeNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "13": "RefBldgStand-aloneRetailNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "14": "RefBldgStripMallNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "15": "RefBldgSuperMarketNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "16": "RefBldgWarehouseNew2004_v1.3_7.1_4A_USA_MD_BALTIMORE.csv",
+          "17": "USA_PA_Philadelphia.724086_TMY2.csv"
+        }
+      }
+    },
+    "rows": 297840
+  }
+}
