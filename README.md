@@ -85,7 +85,7 @@ the original sources keep their own terms.
 |---|---|---|
 | `<region>/bus_table.parquet`, `<region>/cir_fractions.parquet` | Load buses, national bus numbers, census-tract-derived commercial/industrial/residential shares | EPIGRIDS bus data (UW–Madison) |
 | `<region>/state_loads.parquet` | Hourly state loads | EPIGRIDS MATLAB archive (UW–Madison) |
-| `<region>/nrel_profiles.parquet` | Hourly building load profiles by city | DOE commercial reference building simulations (NREL) |
+| `<region>/nrel_profiles.parquet` | Hourly building load profiles by city | DOE commercial reference building simulations plus one residential TMY2 profile per city (NREL) |
 | `caiso/`, `nwpp/`, `rfcw/` `utility_profiles.parquet` | Utility class load profiles | Published utility load-profile data (PG&E rate-schedule profiles; Ohio Power Company class profiles) |
 | `shared/nyseg_profiles.parquet` | Representative-day class load profiles | NYSEG 2016 load profiles |
 | `shared/national_bus_map.parquet` | Regional → national bus numbers | EPIGRIDS national bus numbering |
